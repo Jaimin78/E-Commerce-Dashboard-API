@@ -2,3 +2,8 @@ main {
   text-align: center;
   vertical-align: center;
 }
+.a-wrap a{
+  color:#ffffff;
+  margin:5px;
+  text-decoration:none;
+}
