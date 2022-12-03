@@ -9,10 +9,18 @@ function Header(){
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto a-wrap">
-            <Link to="/add">Add Product</Link>
-            <Link to="/update">Update Product</Link>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
+            {
+             localStorage.getItem("user_data") ?
+              <>
+               <Link to="/add">Add Product</Link>
+               <Link to="/update">Update Product</Link>
+              </>
+              :
+              <>
+               <Link to="/register">Register</Link>
+               <Link to="/login">Login</Link>
+              </>
+            }
           </Nav>
           </Navbar.Collapse>
          </Container>

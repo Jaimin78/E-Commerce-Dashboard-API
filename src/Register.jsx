@@ -1,8 +1,13 @@
-import React,{useState} from 'react'
+import Header from './Header'
+import React,{useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 function Register(){
-
+  useEffect(()=>{
+    if(localStorage.getItem("user_data")){
+      navigate("/")
+    }
+  },[])
   const [Name,setName] = useState("");
   const [Email,setEmail] = useState("");
   const [Password,setPassword] = useState("");
@@ -27,6 +32,8 @@ async function submit(){
   navigate("/");
 }
   return(
+   <>
+     <Header />
     <main>
       <h1>Register page</h1>
       <div className="container my-2">
@@ -36,6 +43,7 @@ async function submit(){
         <button className="btn btn-dark" onClick={submit}>Register</button>
       </div>
     </main>
+   </>
   )
 }
 
