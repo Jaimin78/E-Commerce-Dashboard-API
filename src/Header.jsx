@@ -1,6 +1,12 @@
 import {Navbar, Container, Nav, Button} from 'react-bootstrap'
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 function Header(){
+  const navigate = useNavigate();
+  let user = JSON.parse(localStorage.getItem("user_data"))
+  function logout(){
+    localStorage.clear();
+    navigate("/login");
+  }
   return(
       <div>
        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -25,6 +31,16 @@ function Header(){
           </Navbar.Collapse>
          </Container>
        </Navbar>
+        { 
+          localStorage.getItem("user_data") ?
+          <>
+          <div className="logout">
+            <span>{user.Name}</span>
+            <button onClick={logout}>Logout</button>
+          </div>
+          </>
+          :null
+        }
       </div>
   )
 }

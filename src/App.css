@@ -7,3 +7,25 @@ main {
   margin:5px;
   text-decoration:none;
 }
+
+.logout{
+  display:flex;
+  justify-content:space-between;
+  background:#171717;
+  item-align:center;
+  padding:5px;
+}
+
+.logout span{
+  position:relative;
+  left:5px;
+  color:#dedede;
+  font-size:20px;
+}
+
+.logout button{
+  background:#b80000;
+  color:white;
+  border:0;
+  border-radius:10px;
+}
