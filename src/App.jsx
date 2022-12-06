@@ -11,7 +11,7 @@ function App() {
     <div>     
      <BrowserRouter>         
         <Routes>
-         <Route path="/" element={<Home />} />
+         <Route path="/" element={<Protected Cmp={Home}/>} />
          <Route path="/add" element={<Protected Cmp={AddProduct}/>} />
          <Route path="/update" element={<Protected Cmp={UpdateProduct}/>}/>
          <Route path="/register" element={<Register />} />
