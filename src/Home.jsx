@@ -1,10 +1,13 @@
 import Header from './Header'
-import {Table} from 'react-bootstrap'
+import {Table, Button} from 'react-bootstrap'
 import React,{useState,useEffect} from 'react'
 function Home(){ 
   const [data,setData] = useState([]);
   useEffect(()=>{
-    const fetchData = async () => {
+    fetchData()
+  },[])
+  console.log("Data", data)
+  const fetchData = async () => {
      try{
        let result = await fetch("https://ecomm-efb8.restdb.io/rest/product",{
       method: "GET",
@@ -22,10 +25,19 @@ function Home(){
         console.log("Error",arr)
      }
     }
+  async function Delete(id){
+     let query = await fetch("https://ecomm-efb8.restdb.io/rest/product/"+id,{
+      method: "DELETE",
+      headers:{
+        "content-type":"application/json",
+        "x-apikey": "63887ac2c890f30a8fd1f677",
+        "cache-control": "no-cache"
+       }
+    });
+    let result = await query.json()
+    console.log(result)
     fetchData()
-  },[])
-
-  console.log("Data", data)
+  }
   return(
    <>
       <Header />
@@ -39,6 +51,7 @@ function Home(){
           <th>Name</th>
           <th>Description</th>
           <th>Price</th>
+          <th>Operation</th>
         </tr>
       </thead>
       <tbody>
@@ -50,6 +63,7 @@ function Home(){
           <td>{item.Product_Name}</td>
           <td>{item.Description}</td>
           <td>{item.Price}</td>
+          <td><Button className="btn btn-danger" onClick= {()=>{Delete(item._id)}}>Delete</Button></td>
         </tr>)
         }
       </tbody>
