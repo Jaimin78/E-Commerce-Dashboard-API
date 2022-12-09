@@ -1,6 +1,7 @@
 import Header from './Header'
 import {Table, Button} from 'react-bootstrap'
 import React,{useState,useEffect} from 'react'
+import {Link} from 'react-router-dom'
 function Home(){ 
   const [data,setData] = useState([]);
   useEffect(()=>{
@@ -38,6 +39,11 @@ function Home(){
     console.log(result)
     fetchData()
   }
+
+  function update(id){
+    const navigate = navigate()
+    navigate("/update/"+id)
+  }
   return(
    <>
       <Header />
@@ -64,6 +70,7 @@ function Home(){
           <td>{item.Description}</td>
           <td>{item.Price}</td>
           <td><Button className="btn btn-danger" onClick= {()=>{Delete(item._id)}}>Delete</Button></td>
+          <td><Link to={"/update/"+item._id}><Button className="btn btn-success">Update</Button></Link></td>
         </tr>)
         }
       </tbody>
@@ -72,5 +79,4 @@ function Home(){
    </>
   )
 }
-
 export default Home;

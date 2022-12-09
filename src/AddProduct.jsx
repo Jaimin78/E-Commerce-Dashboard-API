@@ -23,9 +23,10 @@ function AddProduct(){
     request = await request.json()
     alert("Record Added Successfully");
     //console.log("Status",request)
+   
   }
   return(
-    <>
+    <div>
      <Header />
     <main>
       <h1>Add Product</h1>
@@ -33,11 +34,17 @@ function AddProduct(){
       <input type="text" placeholder="Product Name" className="form-control my-1" value={Product_Name} onChange={(e)=>setProductName(e.target.value)} />
         <input type="text" placeholder="Product Price" className="form-control my-1" value={Price} onChange={(e)=>setPrice(e.target.value)}/>
         <input type="text" placeholder="Description" className="form-control my-1" value={Description} onChange={(e)=>setDescription(e.target.value)} />
-        <input type="text" placeholder="Add Photo url" className="form-control my-1" value={Photo} onChange={(e)=>setPhoto(e.target.value)} />
-        <button className="btn btn-dark" onClick={submit}>Add Product</button>
+        <input type="text" id="show" placeholder="Add Photo url" className="form-control my-1" value={Photo} onChange={(e)=>setPhoto(e.target.value)} />  
+        {
+        Photo?
+       <img style={{width:200}} className="my-2" alt="please enter proper url" src={Photo} /> 
+        :null 
+        } <br />
+      <button className="btn btn-dark" onClick={submit}>Add Product</button>
       </div>
+      
     </main>
-   </>
+   </div>
   )
 }
 
