@@ -57,7 +57,7 @@ function Home(){
           <th>Name</th>
           <th>Description</th>
           <th>Price</th>
-          <th>Operation</th>
+          <th colSpan={2}>Operation</th>
         </tr>
       </thead>
       <tbody>

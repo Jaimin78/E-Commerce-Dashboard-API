@@ -22,9 +22,8 @@ function AddProduct(){
     let request = await fetch(url,options);
     request = await request.json()
     alert("Record Added Successfully");
-    //console.log("Status",request)
-   
-  }
+    //console.log("Status",request)  
+}
   return(
     <div>
      <Header />
